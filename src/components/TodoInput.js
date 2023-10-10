@@ -11,6 +11,7 @@ return (<>
 
 export default function Input({addItemToTask}){
   const [item, setItem] = useState("");
+  
 
   function Submit(){
     if(item==="")return
@@ -19,7 +20,7 @@ export default function Input({addItemToTask}){
   }
 
   return(<>
-    <div>Todo List</div>
+    <div class="title">Todo List</div>
     <input value={item}
     onChange={(e)=>setItem(e.target.value)}/>
     <AddButton click={Submit}/>

@@ -8,7 +8,7 @@ import { useState } from "react";
 
 export default function List(){
   const[items, setItems] = useState([]);
-
+  
     function addTask(item){
       const newItem = {id: crypto.randomUUID(), text: item}
       setItems((prevItems) => [...prevItems, newItem]);
