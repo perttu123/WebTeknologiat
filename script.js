@@ -38,7 +38,7 @@ function addTodo() {
     // TODO: Set todoInput value to empty string
     document.getElementById("todoInput").value = "";
  
-      
+      //fkoaskfoaskfoasokfo
 }
 
 // Extra assingment -> try to find a way to remove all completed todo items
