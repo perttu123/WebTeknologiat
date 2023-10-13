@@ -6,9 +6,10 @@ function CardComponent(){
   const cardStyle = {
     margin: '20px', // Add margin to create space between cards
   };
+  
   return (<>
     <Card style={cardStyle}>
-      <Card.Header>Contact Me</Card.Header>
+      <Card.Header style={{fontWeight: 'bold', fontSize: '20px'}}>Contact Me</Card.Header>
       <Card.Body>
         <Card.Text>
          For questions or feedback, please choose a category below:
@@ -19,40 +20,40 @@ function CardComponent(){
       <Card.Header>General Inquiry</Card.Header>
       <Card.Body>
         <Card.Text>
-         For questions or feedback, please choose a category below:
+         For general inquiries, please email us at:
         </Card.Text>
         <GeneralButton/>
       </Card.Body>
     </Card>
      <Card style={cardStyle}>
-      <Card.Header>Contact Me</Card.Header>
+      <Card.Header>Feedback</Card.Header>
       <Card.Body>
         <Card.Text>
-         For questions or feedback, please choose a category below:
+         We value your feedback! Please share your comments at:
         </Card.Text>
         <FeedbackButton/>
       </Card.Body>
     </Card>
     <Card style={cardStyle}>
-      <Card.Header>Contact Me</Card.Header>
+      <Card.Header>Support</Card.Header>
       <Card.Body>
         <Card.Text>
-         For questions or feedback, please choose a category below:
+         Need assistance? Contact our support team at:
         </Card.Text>
-        <SupportButton/>k
+        <SupportButton/>
       </Card.Body>
     </Card>
     </>);
 }
 
 function GeneralButton(){
-  return(<> <Button variant="primary">Subscribe</Button>{' '}</>)
+  return(<> <Button variant="primary">general@example.com</Button>{' '}</>)
 }
 function FeedbackButton(){
-  return(<><Button variant="warning">Warning</Button>{' '}</>)
+  return(<><Button variant="warning">feedback@example.com</Button>{' '}</>)
 }
 function SupportButton(){
-  return(<><Button variant="secondary">Secondary</Button>{' '}</>)
+  return(<><Button variant="secondary">support@example.com</Button>{' '}</>)
 }
 
 function Contact(){
