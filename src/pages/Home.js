@@ -33,12 +33,12 @@ function MyComponent() {
           </Card.Text>
         </Card.Body>
       </Card>
-      <Input  setInput={(value)=>setInput(value)}/>
-      <SubButton click={handleSub}/>
+      <Input inputValue={input} setInput={(value)=>setInput(value)}/>
+      <SubButton click={handleSub} />
       <AlertMessage message={email} showOrHide={showOrHide} onClose={handleAlertClose}/>
       </>);
   }
-  function Input({setInput}){
+  function Input({setInput, inputValue}){
     
     const handleInput = (e) =>{
         setInput(e.target.value);
@@ -50,7 +50,7 @@ function MyComponent() {
     <Form style={cardStyle}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Email address</Form.Label>
-          <Form.Control onChange={handleInput} type="email" placeholder="name@example.com" />
+          <Form.Control value={inputValue} onChange={handleInput} type="email" placeholder="name@example.com" />
           <Form.Text>Subscribe to our newsletter for updates.</Form.Text>
         </Form.Group> 
       </Form>
