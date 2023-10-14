@@ -10,13 +10,28 @@ function MyComponent() {
     const [email, setEmail] = useState("");
     const [showOrHide, setShowOrHide] = useState(false);
     const [input, setInput] = useState("");
+    const [errorMsg, setErrorMsg] = useState(false);
     
-    function handleSub()  {
-      if(input==="")return;
+    function validateEmail(email) {
+      const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+      return emailRegex.test(email);
+    }
+
+    function handleSub(){
+      if(input==="" ||!validateEmail(input))
+      {
+        setErrorMsg(true);
+        setShowOrHide(false);
+        return;
+      }
         setShowOrHide(true);
+        setErrorMsg(false);
         setEmail(input);       
         setInput("");
       };
+      const handleErrorClose = () =>{
+        setErrorMsg(false);
+      }
       const handleAlertClose = () => {
         setShowOrHide(false); // Close the alert by setting showOrHide to false
       };
@@ -29,13 +44,14 @@ function MyComponent() {
         <Card.Body>
           <Card.Title>Home Page</Card.Title>
           <Card.Text>
-            With supporting text below as a natural lead-in to additional content.
+            This is the homepage of our website. Explore other sections using the navigation above.
           </Card.Text>
         </Card.Body>
       </Card>
       <Input inputValue={input} setInput={(value)=>setInput(value)}/>
       <SubButton click={handleSub} />
       <AlertMessage message={email} showOrHide={showOrHide} onClose={handleAlertClose}/>
+      <ErrorMessage show={errorMsg} onClose={handleErrorClose}/>
       </>);
   }
   function Input({setInput, inputValue}){
@@ -50,7 +66,7 @@ function MyComponent() {
     <Form style={cardStyle}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Email address</Form.Label>
-          <Form.Control value={inputValue} onChange={handleInput} type="email" placeholder="name@example.com" />
+          <Form.Control  type="email" value={inputValue} onChange={handleInput} placeholder="name@example.com" />
           <Form.Text>Subscribe to our newsletter for updates.</Form.Text>
         </Form.Group> 
       </Form>
@@ -76,9 +92,23 @@ function MyComponent() {
           </p>
         </Alert>
       );
-    }   
+    }
   }
-  
+  function ErrorMessage({show, onClose}){
+    const cardStyle = {
+      margin: '20px', // Add margin to create space between cards
+    };
+    if (show) {
+      return (
+        <Alert style={cardStyle} variant="danger" onClose={onClose} dismissible>
+          <Alert.Heading>Error!</Alert.Heading>
+          <p>
+            Enter a valid Email address.
+          </p>
+        </Alert>
+      );
+    }
+  }
 function Home(){
     return (<>
     <MyComponent/>   
